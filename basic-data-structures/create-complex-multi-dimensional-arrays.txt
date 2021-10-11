@@ -1,0 +1,10 @@
+let myNestedArray = [
+  // Only change code below this line
+  ['level2'],
+  [['deep']],
+  [[['deeper']]],
+  [[[['deepest']]]]
+  // Only change code above this line
+];
+
+console.log(myNestedArray[1][0][0])
