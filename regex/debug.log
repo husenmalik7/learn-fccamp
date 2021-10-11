@@ -1,0 +1,7 @@
+[1011/101352:INFO:wow_machine_info_utils_win.cc(404)] disk_serial: 0S1VAJ67
+[1011/101352:INFO:wow_machine_info_utils_win.cc(107)] mainboard_sn:  BSN12345678901234567
+[1011/101352:INFO:wow_machine_info_utils_win.cc(427)] disk_serial: 0S1VAJ67
+[1011/101352:ERROR:wow_machine_info_utils_win.cc(150)] When volume_access_path: \\.\D:, volume_path: D:\, DeviceIoControl failed with error code:1
+[1011/101352:ERROR:wow_machine_info_utils_win.cc(150)] When volume_access_path: \\.\C:, volume_path: C:\, DeviceIoControl failed with error code:1
+[1011/101352:ERROR:wow_machine_info_utils_win.cc(150)] When volume_access_path: \\.\E:, volume_path: E:\, DeviceIoControl failed with error code:1
+[1011/101352:INFO:wow_machine_info_utils_win.cc(107)] mainboard_sn:  BSN12345678901234567
