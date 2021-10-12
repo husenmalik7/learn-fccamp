@@ -1,0 +1,28 @@
+function mutation(arr) {
+  let a = arr[0].toLowerCase()
+  let b = arr[1].toLowerCase().split('')
+
+  console.log(arr)
+  console.log(b)
+  let points = 0
+  for (let i = 0;i<b.length;i++) {
+    if (a.includes(b[i])) {
+      points += 1
+    }
+  }
+
+  console.log({points})
+  console.log(b.length)
+
+  if (points == b.length) {
+    return true
+  } else {
+    return false
+  }
+
+
+
+  
+}
+
+mutation(["hello", "hey"]);

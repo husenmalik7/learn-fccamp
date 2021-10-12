@@ -1,0 +1,43 @@
+function titleCase(str) {
+  let arr = str.split(' ')
+  console.log(arr)
+
+
+console.log(arr[2])
+let a = arr[2].split('')
+// a = a.split('')
+console.log(a)
+a[0] = a[0].toUpperCase()
+console.log(a)
+a = a.join('')
+console.log({a})
+
+
+
+
+
+
+  for (let i=0;i<arr.length;i++) {
+    let temp = arr[i].toLowerCase().split('')
+    temp[0] = temp[0].toUpperCase()
+    temp = temp.join('')
+    arr[i] = temp 
+  }
+
+  console.log(arr.join(' '))
+  return arr.join(' ')
+
+  
+
+  
+
+  
+  
+
+  
+  // let str = "Hello World!";
+// str.toUpperCase()   // Returns "HELLO WORLD!"
+  
+}
+
+titleCase("sHoRt AnD sToUt");

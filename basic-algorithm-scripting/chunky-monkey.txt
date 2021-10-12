@@ -1,0 +1,27 @@
+function chunkArrayInGroups(arr, size) {
+  let newArr = []
+  let arrTemp = []
+  for (let i=0;i<arr.length;i++) {
+    arrTemp.push(arr[i])
+    if ((i+1) % size == 0 && i != 0) {
+      // arrTemp.push(',')
+      newArr.push(arrTemp)
+      arrTemp = []  
+    }
+  }
+  if (arrTemp.length != 0) {
+    newArr.push(arrTemp)
+  }
+  
+  console.log(arrTemp)
+  console.log(newArr)
+  
+  return newArr;
+}
+
+
+
+// chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6], 3) //should return [[0, 1, 2], [3, 4, 5], [6]]
+// chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4) //should return [[0, 1, 2, 3], [4, 5]].
+chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2) //should return [[0, 1], [2, 3], [4, 5]].
+

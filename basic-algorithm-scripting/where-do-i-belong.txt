@@ -1,0 +1,31 @@
+function getIndexToIns(arr, num) {
+
+let newArr = arr.sort(function(a, b){return a-b})
+console.log(newArr)
+console.log(num)
+let index = 0;
+for(let i=0;i<newArr.length;i++ ) {
+  if (num > newArr[i]) {
+    index = i
+    // i=newArr.length
+  } else if (num == newArr[i]) {
+    index = i-1
+  }
+  // console.log(newArr[i])
+}
+
+console.log(index)
+console.log(newArr.length)
+if (newArr.length == 0) return index
+
+return index+1;  
+}
+
+// getIndexToIns([5, 3, 20, 3], 5);
+// getIndexToIns([40, 60], 50)
+// getIndexToIns([2, 5, 10], 15) //3
+// getIndexToIns([3, 10, 5], 3) //0
+getIndexToIns([], 1)
+
+ 
+

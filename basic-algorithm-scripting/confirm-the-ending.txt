@@ -1,0 +1,41 @@
+function confirmEnding(str, target) {
+  let arr = str.split('')
+  let arrTarget = target.split('')
+  
+  console.log(arr)
+  console.log(target)
+  console.log(arrTarget)
+
+
+  let point = 0;
+  let j=0
+  for (let i  = arrTarget.length-1; i >= 0 ; i--) {
+    console.log(arrTarget[i], arr[arr.length-1+j], j)
+    if (arrTarget[i] == arr[arr.length-1+j]) {
+      
+      point = point+1
+    }
+    j=j-1
+  }
+  // console.log(arrTarget[3])
+  // console.log(arr[arr.length-1])
+
+  // console.log(arrTarget[2])
+  // console.log(arr[arr.length-1 -1])
+
+  console.log(point)
+  console.log(target.length)
+
+  if (point == target.length) {
+    console.log('true')
+    return true
+  } else {
+    console.log('false')
+    return false
+  }
+
+
+  
+}
+
+confirmEnding("Open sesame", "same");

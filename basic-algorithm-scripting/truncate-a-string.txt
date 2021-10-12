@@ -1,0 +1,23 @@
+function truncateString(str, num) {
+  console.log(str.length, num)
+  if (str.length > num) {
+
+  
+
+  let newStr = ''
+  for(let i = 0;i<num;i++) {
+    newStr =newStr+ str[i]
+  }
+  newStr += '...'
+  console.log(newStr)
+  return newStr;
+  } else {
+    console.log('else')
+    console.log(str)
+    return str
+  }
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 45);
+
+console.log("A-tisket a-tasket A green and yellow basket".length)
