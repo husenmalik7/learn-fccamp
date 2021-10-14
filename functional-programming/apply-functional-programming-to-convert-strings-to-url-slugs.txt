@@ -1,0 +1,18 @@
+// Only change code below this line
+function urlSlug(title) {
+let s = title.toLowerCase().split(/\W/g)
+let sNoSpace = []
+for (let i=0;i<s.length;i++) {
+  if (s[i] != '') {
+    sNoSpace.push(s[i])
+  }
+}
+console.log(sNoSpace)
+return sNoSpace.join('-')
+
+
+
+}
+// Only change code above this line
+
+urlSlug(" Winter Is  Coming") //should return the string winter-is-coming

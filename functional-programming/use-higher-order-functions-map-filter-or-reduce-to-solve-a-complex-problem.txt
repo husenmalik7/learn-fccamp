@@ -1,0 +1,22 @@
+const squareList = arr => {
+  // Only change code below this line
+  console.log(arr)
+
+  let positive = arr.filter(item => item>0)
+  console.log(positive)
+
+  let noDec = positive.filter(item => item %1==0)
+  console.log(noDec)
+  
+  let square = noDec.map(item => item * item)
+  console.log(square)
+
+  return square;
+  // Only change code above this line
+};
+
+// const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+// console.log(squaredIntegers);
+
+
+squareList([4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2]) //should return [16, 1764, 36].

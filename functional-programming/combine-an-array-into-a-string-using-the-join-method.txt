@@ -1,0 +1,13 @@
+function sentensify(str) {
+  // Only change code below this line
+console.log(str.split('-'))
+let s = str.split(/\W/g)
+console.log(s)
+s = s.join(' ')
+console.log(s)
+return s
+// console.log(str.join('-'))
+
+  // Only change code above this line
+}
+sentensify("May-the-force-be-with-you");
