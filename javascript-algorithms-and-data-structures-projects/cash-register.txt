@@ -1,0 +1,169 @@
+let drawer = [100, 20, 10, 5, 1, 0.25, 0.1, 0.05, 0.01];
+
+function checkCashRegister(price, cash, cid) {
+  let exchange = doGetExchange(price, cash);
+  let sumCid = doSumCid(cid, exchange);
+  let status = "";
+
+  if (sumCid == exchange) {
+    status = "CLOSED";
+    return { status, change: cid };
+  } else if (sumCid < exchange) {
+    status = "INSUFFICIENT_FUNDS";
+    let returnValue = { status, change: [] };
+    console.log(returnValue);
+    return returnValue;
+  } else {
+    status = "OPEN";
+  }
+
+  // console.log({ sumCid });
+  // console.log({ exchange });
+  // console.log({ status });
+
+  if (cash < price) {
+    console.log("kurang uang");
+  } else {
+    let arr = [];
+    for (let i = 0; i < drawer.length; i++) {
+      if (exchange >= drawer[i]) {
+        if (cid[cid.length - 1 - i][1] >= exchange) {
+          //get a little of drawer / total of exchange
+          //this condition will burn exchange to zero
+          //dont forget to minus the cid
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "ONE HUNDRED") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 100);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "TWENTY") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 20);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "TEN") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 10);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "FIVE") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 5);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "ONE") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 1);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "QUARTER") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 0.25);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "DIME") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 0.1);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "NICKEL") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 0.05);
+            i++;
+          }
+
+          exchange = parseFloat(exchange.toFixed(2));
+          if (cid[cid.length - 1 - i][0] == "PENNY") {
+            exchange = doMinusExchange(exchange, cid, arr, i, 0.01);
+            i++;
+          }
+
+          // exchange = parseFloat(exchange.toFixed(2));
+        } else {
+          //get all of drawer
+
+          exchange = exchange - cid[cid.length - 1 - i][1];
+          exchange = parseFloat(exchange.toFixed(2));
+
+          let temp = [cid[cid.length - 1 - i][0], cid[cid.length - 1 - i][1]];
+          arr.push(temp);
+
+          cid[cid.length - 1 - i][1] =
+            cid[cid.length - 1 - i][1] - cid[cid.length - 1 - i][1];
+        }
+      }
+    }
+
+    // console.log({ cid });
+
+    console.log({ arr });
+    // console.log({ status });
+
+    //remove zero value
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i][1] > 0) {
+        newArr.push(arr[i]);
+      }
+    }
+
+    // console.log(newArr);
+    let returnValue = {
+      status,
+      change: newArr,
+    };
+    console.log(returnValue);
+    return returnValue;
+  }
+}
+
+checkCashRegister(3.26, 100, [
+  ["PENNY", 1.01],
+  ["NICKEL", 2.05],
+  ["DIME", 3.1],
+  ["QUARTER", 4.25],
+  ["ONE", 90],
+  ["FIVE", 55],
+  ["TEN", 20],
+  ["TWENTY", 60],
+  ["ONE HUNDRED", 100],
+]);
+
+function doGetExchange(price, cash) {
+  let exchange = cash - price;
+  return exchange;
+}
+
+function doMinusExchange(exchange, cid, arr, i, unit) {
+  let subtractor = Math.floor(exchange / unit) * unit;
+  exchange = exchange - subtractor;
+
+  cid[cid.length - 1 - i][1] = cid[cid.length - 1 - i][1] - subtractor;
+
+  let temp = [cid[cid.length - 1 - i][0], subtractor];
+
+  arr.push(temp);
+  return exchange;
+}
+
+function doSumCid(cid, exchange) {
+  let total = 0;
+
+  for (let i = 0; i < drawer.length; i++) {
+    if (exchange >= drawer[i]) {
+      // console.log(cid[cid.length - 1 - i]);
+      total += cid[cid.length - 1 - i][1];
+    }
+    // total += cid[i][1];
+  }
+
+  return total;
+}

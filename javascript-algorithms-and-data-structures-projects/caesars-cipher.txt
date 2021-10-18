@@ -1,0 +1,54 @@
+function rot13(str) {
+  console.log(str);
+
+  let alphabets = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  let newStr = [];
+  for (let i = 0; i < str.length; i++) {
+    if (alphabets.indexOf(str[i]) == -1) {
+      newStr.push(str[i]);
+    } else {
+      // console.log(str[i], alphabets.indexOf(str[i]));
+
+      if (alphabets.indexOf(str[i]) < 13) {
+        // console.log(alphabets[alphabets.indexOf(str[i]) + 13]);
+        newStr.push(alphabets[alphabets.indexOf(str[i]) + 13]);
+      } else {
+        newStr.push(alphabets[alphabets.indexOf(str[i]) - 13]);
+      }
+    }
+  }
+
+  newStr = newStr.join("");
+  console.log(newStr);
+
+  return newStr;
+}
+
+rot13("SERR PBQR PNZC");

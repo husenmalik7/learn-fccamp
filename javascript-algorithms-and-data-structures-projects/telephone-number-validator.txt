@@ -1,0 +1,129 @@
+function telephoneCheck(str) {
+  // console.log(str, str.length);
+  let patternNumber = /^[0-9]*$/;
+  switch (str.length) {
+    case 10:
+      if (patternNumber.test(str)) {
+        return true;
+      } else {
+        return false;
+      }
+
+      break;
+
+    case 12:
+      if (
+        patternNumber.test(str[0]) == false &&
+        patternNumber.test(str[str.length - 1]) == false
+      ) {
+        return false;
+      } else {
+        return true;
+      }
+
+      break;
+
+    case 13:
+      let check13 = doCheck13(str);
+      return check13;
+
+      break;
+
+    case 14:
+      let newStr = str;
+
+      let points = 0;
+      // if (newStr[1] == "(" || newStr[1] == " ") points += 1;
+      if (
+        (newStr[5] == ")" && newStr[1] == "(") ||
+        newStr[5] == "-" ||
+        newStr[5] == " "
+      )
+        points += 1;
+      if (newStr[9] == "-" || newStr[9] == " ") points += 1;
+      if (
+        newStr[10] == newStr[11] &&
+        newStr[10] == newStr[12] &&
+        newStr[10] == newStr[13]
+      )
+        points += 1;
+
+      if (points == 3) {
+        return true;
+      } else {
+        return false;
+      }
+
+      break;
+
+    case 16:
+      let points16 = 0;
+      if (str[12] == str[13] && str[12] == str[14] && str[12] == str[15])
+        points16 += 1;
+      if (str[2] == "(" && str[6] == ")") points16 += 1;
+
+      // console.log(str, str.length, points16);
+
+      if (points16 == 2) {
+        return true;
+      } else {
+        return false;
+      }
+
+      break;
+    default:
+      return false;
+      break;
+  }
+}
+
+function doCheck13(str) {
+  let points = 0;
+  if (str[0] == "(") points += 1;
+  if (str[4] == ")") points += 1;
+  if (str[8] == "-") points += 1;
+
+  if (points == 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// 10
+// telephoneCheck("5555555555");
+
+// 12
+// telephoneCheck("555-555-5555");
+// telephoneCheck("555 555 5555");
+
+// telephoneCheck("(6054756961)");
+
+// 13
+// telephoneCheck("(555)555-5555");
+
+// telephoneCheck("123**&!!asdf#");
+// telephoneCheck("(275)76227382");
+// telephoneCheck("2(757)6227382");
+// telephoneCheck("555)-555-5555");
+// telephoneCheck("(555-555-5555");
+
+// 14
+// telephoneCheck("(555) 555-5555");
+// telephoneCheck("1 555 555 5555");
+// telephoneCheck("1 555-555-5555");
+// telephoneCheck("1(555)555-5555");
+// telephoneCheck("1 555 555 5555");
+// telephoneCheck("1 456 789 4444");
+// console.log("---");
+// telephoneCheck("1 555)555-5555");
+// telephoneCheck("2 757 622-7382");
+// telephoneCheck("2(757)622-7382");
+// telephoneCheck("55 55-55-555-5");
+
+// 16
+telephoneCheck("1 (555) 555-5555");
+console.log("---");
+telephoneCheck("2 (757) 622-7382");
+telephoneCheck("0 (757) 622-7382");
+telephoneCheck("(555)5(55?)-5555");

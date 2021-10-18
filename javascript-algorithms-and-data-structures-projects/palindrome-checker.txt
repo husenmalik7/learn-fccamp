@@ -1,0 +1,68 @@
+function palindrome(str) {
+  //1 tolowercase
+  str = str.toLowerCase()
+  // console.log(str)
+
+  //2 remove any non aplhanumeric
+  str = str.split(/[^a-zA-Z\d]/g)
+  // console.log(str)
+  str = str.join('').split('')
+  console.log(str)
+
+  //3 get length
+  let arrLength = Math.floor(str.length/2)
+  console.log({arrLength})
+
+  //4 loop check
+  let points = 0;
+  for (let i = 0; i<arrLength;i++) {
+    // console.log(str[i] , str[str.length-1-i])
+    if (str[i] == str[str.length-1-i]) {
+      points = points + 1
+    }
+  }
+
+  console.log({points})
+
+  if (arrLength == points) {
+    console.log(true)
+    return true;
+  } else {
+    console.log(false)
+    return false;
+  }
+  
+  
+  
+
+
+
+
+  
+}
+
+
+palindrome("eye")
+// palindrome("_eye");
+// palindrome("race car");
+
+// palindrome("not a palindrome")
+
+// palindrome("A man, a plan, a canal. Panama");
+// palindrome("never odd or even")
+
+// palindrome("nope")
+// palindrome("almostomla")
+
+// palindrome("My age is 0, 0 si ega ym.")
+
+// palindrome("1 eye for of 1 eye.")
+
+// palindrome("0_0 (: /-\ :) 0-0")
+
+// palindrome("five|\_/|four")
+
+
+
+
+

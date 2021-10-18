@@ -1,0 +1,133 @@
+let thousand = "M";
+
+let oneCollection = ["M", "C", "X", "I"];
+let fiveCollection = ["D", "L", "V"]; // 500 50 5
+
+function convertToRoman(num) {
+  //1 break the num
+  num = num.toString().split("");
+  console.log(num);
+
+  //1.2 group by three
+  let hundredGroup = [];
+  let thousandGroup = [];
+  for (let i = num.length - 1; i >= 0; i--) {
+    if (i >= num.length - 3) {
+      hundredGroup.unshift(num[i]);
+    } else {
+      thousandGroup.unshift(num[i]);
+    }
+  }
+
+  console.log(hundredGroup);
+  num = hundredGroup;
+  thousandGroup = parseInt(thousandGroup.join(""));
+  console.log("+++++++++");
+
+  //2 break 10 base
+  let romans = [...hundredGroup];
+  for (let i = num.length - 1; i >= 0; i--) {
+    // console.log(i, num[i]);
+    let breakTen = doBreakTen(i, num.length);
+    // console.log(breakTen);
+
+    switch (breakTen) {
+      case "unit":
+        romans[i] = doRomanConvert("unit", num[i]);
+        break;
+      case "dozen":
+        romans[i] = doRomanConvert("dozen", num[i]);
+        break;
+      case "hundred":
+        romans[i] = doRomanConvert("hundred", num[i]);
+        break;
+
+      default:
+        romans[i] = "M";
+        break;
+    }
+  }
+
+  let romansThousand = [];
+  for (let i = 0; i < thousandGroup; i++) {
+    romansThousand.push("M");
+  }
+
+  console.log(romansThousand);
+  console.log(romans);
+
+  let finalRomans = romansThousand.join("") + romans.join("");
+  console.log(finalRomans);
+
+  return finalRomans;
+}
+
+console.log("-----------------");
+// convertToRoman(35);
+// convertToRoman(34);
+// convertToRoman(46945)
+convertToRoman(5001);
+// convertToRoman(945612300012);
+// convertToRoman(900);
+// convertToRoman(90);
+// convertToRoman(9);
+console.log("-----------------");
+
+function doBreakTen(i, length) {
+  // console.log(i);
+
+  let arr = ["unit", "dozen", "hundred"];
+  let arrBreakValue = length - 1 - i;
+
+  return arr[arrBreakValue];
+}
+
+function doRomanConvert(unit, value) {
+  let result = "";
+
+  console.log("===", value);
+  console.log("===", unit);
+
+  let converterOne = 0;
+  let converterFive = 0;
+
+  switch (unit) {
+    case "unit":
+      converterFive = 2;
+      converterOne = 2;
+      break;
+
+    case "dozen":
+      converterFive = 1;
+      converterOne = 1;
+      break;
+
+    case "hundred":
+      converterFive = 0;
+      converterOne = 0;
+      break;
+
+    default:
+      break;
+  }
+
+  if (value == 5) {
+    result = fiveCollection[converterFive];
+  } else if (value == 4) {
+    result = oneCollection[converterOne + 1] + fiveCollection[converterFive];
+  } else if (value == 9) {
+    result = oneCollection[converterOne + 1] + oneCollection[converterOne];
+  } else if (value > 5 && value < 9) {
+    result = fiveCollection[converterFive];
+    for (let i = 0; i < value - 5; i++) {
+      result += oneCollection[converterOne + 1];
+    }
+  } else {
+    for (let i = 0; i < value; i++) {
+      result += oneCollection[converterOne + 1];
+    }
+  }
+
+  console.log("++", result);
+  return result;
+}
