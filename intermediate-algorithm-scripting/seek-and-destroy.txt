@@ -1,0 +1,41 @@
+function destroyer(arr, ...arg) {
+  console.log({arr})
+  console.log({arg})
+  
+
+  var indices = [];
+  for (let i =0;i<arg.length;i++) {
+    var idx = arr.indexOf(arg[i]);
+
+    while (idx != -1) {
+      indices.push(idx);
+      idx = arr.indexOf(arg[i], idx + 1);
+    }       
+  }
+  
+  indices.sort((a,b)=>a-b)
+  console.log({indices})
+  
+  let exdices = []
+  for(let i=0;i<arr.length;i++) {
+    if (indices.includes(i) == false) {
+      exdices.push(i)
+    }
+  }
+  console.log({exdices})
+
+  console.log('----')
+  let newArr = []
+  for(let i=0;i<exdices.length;i++) {
+   newArr.push(arr[exdices[i]])
+  }
+  console.log({newArr})
+  
+
+  return newArr;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+// destroyer([3, 5, 1, 2, 2], 2, 3, 5) //should return [1].
+
+

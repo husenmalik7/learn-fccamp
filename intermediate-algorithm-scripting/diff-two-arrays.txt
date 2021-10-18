@@ -1,0 +1,35 @@
+function diffArray(arr1, arr2) {
+  console.log(arr1)
+  console.log(arr2)
+  let arrConcat = arr1.concat(arr2)
+  console.log(arrConcat)
+  let newArr = []
+
+for(let j = 0;j<arrConcat.length;j++){
+  let point = 0;
+  for(let i = 0;i<arrConcat.length;i++){
+    if (j != i) {
+      if (arrConcat[i] != arrConcat[j]) {
+        point = point+1
+      }
+      console.log(j,i, point)
+    }
+  }
+  console.log(point, arrConcat[j])
+  if (point == arrConcat.length-1) {
+    console.log(arrConcat[j])
+    newArr.push(arrConcat[j])
+  }
+  point=0  
+}
+  
+
+  console.log(newArr)
+
+  return newArr
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+// diffArray(['a', "w", "pink", "x"], ['a', "w", "x"])
+
+
