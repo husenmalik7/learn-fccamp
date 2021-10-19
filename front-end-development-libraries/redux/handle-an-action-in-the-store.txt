@@ -1,0 +1,26 @@
+const defaultState = {
+  login: false
+};
+
+const reducer = (state = defaultState, action) => {
+  // Change code below this line
+  console.log(action)
+  console.log(state)
+
+  if (action.type == 'LOGIN') {
+    let newState = {login:true} //overwrite not assigment
+    return newState
+  } else {
+    return state
+  }
+
+  // Change code above this line
+};
+
+const store = Redux.createStore(reducer);
+
+const loginAction = () => {
+  return {
+    type: 'LOGIN'
+  }
+};
