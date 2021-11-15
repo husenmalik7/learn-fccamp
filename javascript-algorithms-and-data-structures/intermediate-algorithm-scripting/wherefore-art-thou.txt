@@ -1,0 +1,74 @@
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+  let sourceArr = changeToArrForm(source);
+  let collectionArr = collectionToArr(collection);
+
+  let indexOfCompare = searchIndexOfCollection(sourceArr, collectionArr);
+
+  for (let i = 0; i < indexOfCompare.length; i++) {
+    arr.push(collection[indexOfCompare[i]]);
+  }
+
+  console.log(arr);
+
+  // Only change code above this line
+  return arr;
+
+  function searchIndexOfCollection(sourceArr, collectionArr) {
+    let arr = [];
+    let point = 0;
+
+    for (let b = 0; b < collectionArr.length; b++) {
+      for (let y = 0; y < sourceArr.length; y++) {
+        for (let x = 0; x < collectionArr[b].length; x++) {
+          if (sourceArr[y] === collectionArr[b][x]) {
+            point += 1;
+          }
+        }
+      }
+
+      if (point >= sourceArr.length) {
+        arr.push(b);
+      }
+
+      point = 0;
+    }
+
+    return arr;
+  }
+
+  function collectionToArr(collection) {
+    let arr = [];
+
+    for (let i = 0; i < collection.length; i++) {
+      let temp = changeToArrForm(collection[i]);
+
+      arr.push(temp);
+    }
+
+    return arr;
+  }
+
+  function changeToArrForm(source) {
+    let arr = [];
+
+    for (let i = 0; i < Object.keys(source).length; i++) {
+      let nameOfKeys = Object.keys(source)[i];
+      let valueFromKeys = source[nameOfKeys];
+      let tempString = nameOfKeys + "_" + valueFromKeys;
+      arr.push(tempString);
+    }
+
+    return arr;
+  }
+}
+
+whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" },
+  ],
+  { last: "Capulet" }
+);
