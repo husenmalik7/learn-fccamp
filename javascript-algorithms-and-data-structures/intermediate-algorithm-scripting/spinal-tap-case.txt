@@ -1,0 +1,38 @@
+function spinalCase(str) {
+  //check _ case
+  let regex = /_/g;
+  let underscoreString = str.replace(regex, " ");
+
+  //check camelCase
+  let regexUpperCase = /[A-Z]/;
+
+  let camelCaseArr = [];
+  camelCaseArr.push(underscoreString[0]);
+
+  for (let i = 1; i < underscoreString.length; i++) {
+    //start from 1, avoid the first letter
+    if (regexUpperCase.test(underscoreString[i])) {
+      if (underscoreString[i - 1] !== " ") {
+        camelCaseArr.push(" ");
+      }
+    }
+
+    camelCaseArr.push(underscoreString[i]);
+  }
+
+  let camelCaseFormatted = camelCaseArr.join("");
+
+  //format the string
+  let formattedString = camelCaseFormatted.toLowerCase().split(" ").join("-");
+  console.log(formattedString);
+
+  return formattedString;
+}
+
+spinalCase("This Is Spinal Tap");
+spinalCase("The_Andy_Griffith_Show");
+spinalCase("thisIsSpinalTap");
+spinalCase("AllThe-small Things");
+
+//check _ case
+//check camel case
