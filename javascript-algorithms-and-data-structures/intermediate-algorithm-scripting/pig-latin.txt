@@ -1,0 +1,52 @@
+function translatePigLatin(str) {
+  let vowel = ["a", "i", "u", "e", "o"];
+  let result = "";
+
+  let isHaveVowel = checkVowel(str, vowel);
+
+  if (vowel.includes(str[0])) {
+    result = str + "way";
+  } else if (!isHaveVowel) {
+    result = str + "ay";
+  } else {
+    result = checkConCluster(str, vowel);
+  }
+  console.log(result);
+
+  function checkConCluster(str, vowel) {
+    let firstCluster = [];
+    let splicedStr = [...str];
+    let result = "";
+
+    for (let i = 0; i < str.length; i++) {
+      if (vowel.includes(str[i])) {
+        i = str.length;
+      } else {
+        firstCluster.push(str[i]);
+        splicedStr.shift();
+      }
+    }
+
+    result = splicedStr.join("") + firstCluster.join("") + "ay";
+
+    return result;
+  }
+
+  function checkVowel(str, vowel) {
+    let isVowel = false;
+
+    for (let i = 0; i < str.length; i++) {
+      if (vowel.includes(str[i])) {
+        isVowel = true;
+      }
+    }
+
+    return isVowel;
+  }
+
+  return result;
+}
+
+translatePigLatin("rhythm");
+translatePigLatin("schwartz");
+translatePigLatin("california");
