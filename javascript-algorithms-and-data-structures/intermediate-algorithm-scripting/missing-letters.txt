@@ -1,0 +1,26 @@
+function fearNotLetter(str) {
+  let missingIndex = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (i !== str.length - 1) {
+      if (str[i + 1].charCodeAt(0) !== str[i].charCodeAt(0) + 1) {
+        missingIndex = str[i].charCodeAt(0);
+      }
+    }
+  }
+
+  missingIndex = missingIndex + 1; // missingIndex is before, +1 is the real missing index
+  console.log(missingIndex);
+
+  let missingChar = String.fromCharCode(missingIndex);
+  if (missingIndex === 1) missingChar = undefined;
+  console.log(missingChar);
+
+  str = missingChar;
+
+  return str;
+}
+
+fearNotLetter("abcdefghijklmnopqrstuvwxyz");
+
+// a  b  c  e
+// 97 98 99 101
