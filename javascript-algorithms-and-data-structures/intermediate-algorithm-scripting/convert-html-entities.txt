@@ -1,0 +1,29 @@
+function convertHTML(str) {
+  let newStr = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "&") {
+      newStr.push("&amp;");
+    } else if (str[i] === "<") {
+      newStr.push("&lt;");
+    } else if (str[i] === ">") {
+      newStr.push("&gt;");
+    } else if (str[i] === '"') {
+      newStr.push("&quot;");
+    } else if (str[i] === "'") {
+      newStr.push("&apos;");
+    } else {
+      newStr.push(str[i]);
+    }
+  }
+
+  //   arr = arr.join(" ");
+  console.log(newStr.join(""));
+
+  return (str = newStr.join(""));
+}
+
+// convertHTML("Dolce & Gabbana");
+// convertHTML("Hamburgers < Pizza < Tacos");
+// convertHTML("Sixty > twelve");
+// convertHTML('Stuff in "quotation marks"');
+convertHTML("Schindler's List");
