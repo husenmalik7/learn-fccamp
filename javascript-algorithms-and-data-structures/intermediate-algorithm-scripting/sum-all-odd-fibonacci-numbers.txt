@@ -1,0 +1,38 @@
+function sumFibs(num) {
+  //generate fibs num less than num
+
+  let fib = [1, 1];
+  let i = 0;
+  while (i <= num) {
+    let temp = fib[i] + fib[i + 1];
+
+    if (temp <= num) {
+      fib.push(temp);
+    }
+
+    i = i + 1;
+  }
+  console.log(fib);
+
+  //remove the even number
+  let fibOdds = [];
+  for (let i = 0; i < fib.length; i++) {
+    if (fib[i] % 2 !== 0) {
+      fibOdds.push(fib[i]);
+    }
+  }
+
+  console.log(fibOdds);
+
+  //sum the fibs
+  let result = 0;
+  for (let i = 0; i < fibOdds.length; i++) {
+    result = result + fibOdds[i];
+  }
+  console.log({ result });
+  console.log({ num });
+
+  return result;
+}
+
+sumFibs(1);

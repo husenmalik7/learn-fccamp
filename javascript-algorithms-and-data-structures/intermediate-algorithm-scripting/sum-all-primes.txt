@@ -1,0 +1,28 @@
+function sumPrimes(num) {
+  let arr = [];
+
+  for (let isPrimeNum = 2; isPrimeNum <= num; isPrimeNum++) {
+    let point = -1;
+    for (let i = isPrimeNum; i > 1; i--) {
+      if (isPrimeNum % i === 0) {
+        point = point + 1;
+      }
+    }
+
+    if (point === 0) {
+      arr.push(isPrimeNum);
+    }
+  }
+
+  // console.log(arr);
+  num = 0;
+  for (let i = 0; i < arr.length; i++) {
+    num = num + arr[i];
+  }
+
+  console.log(num);
+
+  return num;
+}
+
+sumPrimes(977);
