@@ -1,0 +1,30 @@
+function binaryAgent(str) {
+  // prepare 8 room library
+  let binaryRoom = [128, 64, 32, 16, 8, 4, 2, 1];
+  let asciiArr = [];
+
+  let arr = str.split(" ");
+
+  for (let j = 0; j < arr.length; j++) {
+    let deepArr = arr[j].split("");
+
+    let temp = 0;
+    for (let i = 0; i < deepArr.length; i++) {
+      if (deepArr[i] == 1) {
+        temp = temp + binaryRoom[i];
+      }
+    }
+
+    let char = String.fromCharCode(temp);
+
+    asciiArr.push(char);
+  }
+
+  console.log(asciiArr.join(""));
+
+  return (str = asciiArr.join(""));
+}
+
+binaryAgent(
+  "01000010 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"
+);
