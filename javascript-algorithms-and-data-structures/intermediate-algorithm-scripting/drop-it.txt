@@ -1,0 +1,54 @@
+function dropElements(arr, func) {
+  let newArr = [...arr];
+
+  let index;
+
+  for (let i = 0; i < newArr.length; i++) {
+    // console.log(func(newArr[i]));
+
+    if (func(newArr[i]) === true) {
+      // console.log(i);
+      index = i;
+      i = newArr.length;
+    }
+  }
+
+  if (index === undefined) {
+    newArr = [];
+  } else if (index === 0) {
+  } else {
+    for (let i = 0; i < index; i++) {
+      newArr.shift();
+    }
+  }
+
+  console.log(newArr);
+
+  // console.log(index);
+
+  return newArr;
+}
+
+dropElements([1, 2, 3], function (n) {
+  return n > 0;
+}); // 1 2 3
+
+dropElements([1, 2, 3, 4], function (n) {
+  return n > 5;
+}); //
+
+dropElements([1, 2, 3, 4], function (n) {
+  return n >= 3;
+}); // 3 4
+
+dropElements([0, 1, 0, 1], function (n) {
+  return n === 1;
+}); // 1 0 1
+
+dropElements([1, 2, 3, 7, 4], function (n) {
+  return n > 3;
+}); // 7 4
+
+dropElements([1, 2, 3, 9, 2], function (n) {
+  return n > 2;
+}); // 3 9 2
