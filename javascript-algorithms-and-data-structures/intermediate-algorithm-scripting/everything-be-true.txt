@@ -1,0 +1,48 @@
+function truthCheck(collection, pre) {
+  let point = 0;
+  for (let i = 0; i < collection.length; i++) {
+    if (collection[i].hasOwnProperty(pre)) {
+      point += 1;
+      if (
+        collection[i][pre] === "" ||
+        collection[i][pre] === 0 ||
+        collection[i][pre] === null ||
+        collection[i][pre] === undefined ||
+        collection[i][pre] !== collection[i][pre]
+      ) {
+        point -= 1;
+      }
+    }
+  }
+
+  let result;
+  if (point !== collection.length) {
+    result = false;
+    console.log(false);
+  } else {
+    result = true;
+    console.log(true);
+  }
+
+  // console.log({ point });
+
+  return result;
+}
+
+truthCheck([{ single: "double" }, { single: NaN }], "single"); // should return false.
+truthCheck([{ single: "yes" }], "single");
+
+// let a = NaN;
+// // console.log(a);
+// if (a !== a) {
+//   console.log("ada");
+// }
+
+// check key not value
+//false
+// no key
+// age 0
+// onboat null
+// empty string
+// undefined
+// NaN
