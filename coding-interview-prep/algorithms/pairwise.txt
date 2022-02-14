@@ -1,0 +1,34 @@
+function pairwise(arr, arg) {
+
+  let sum = 0;
+  
+
+  for (let i=0;i<arr.length;i++) {
+    for (let j=i;j<arr.length;j++) {
+
+      if (i !== j) {
+        if (arr[i] + arr[j] == arg) {
+          // console.log(i,j)
+          arr[i] = 'x'
+          arr[j] = 'x'
+
+          sum = sum + (i+j)
+        }
+      }
+
+
+    }
+  }
+
+  
+return sum
+
+
+}
+
+// pairwise([1, 4, 2, 3, 0, 5], 7)
+pairwise([1, 3, 2, 4], 4)
+// pairwise([1, 1, 1], 2)
+// pairwise([0, 0, 0, 0, 1, 1], 1)
+// pairwise([], 100)
+
